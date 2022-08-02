@@ -26,8 +26,18 @@ public class SalesManager {
 
     public int truncatedMean() {
         int trMean = 0;
+        boolean oneMaxFound = false;
+        boolean oneMinFound = false;
         for (long sale : sales) {
-            if (sale == this.max() || sale == this.min()) {
+           /* if (sale == this.max() || sale == this.min()) {
+                continue;
+            }*/
+            if(sale == this.max() && !oneMaxFound){
+                oneMaxFound = true;
+                continue;
+            }
+            if(sale == this.min() && !oneMinFound){
+                oneMinFound = true;
                 continue;
             }
             trMean += sale;
