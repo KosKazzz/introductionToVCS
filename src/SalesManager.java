@@ -14,6 +14,7 @@ public class SalesManager {
         }
         return max;
     }
+
     public long min() {
         long min = sales[0];
         for (long sale : sales) {
@@ -24,26 +25,23 @@ public class SalesManager {
         return min;
     }
 
-    public int truncatedMean() {
-        int trMean = 0;
+    public long truncatedMean() {
+        long trMean = 0;
         boolean oneMaxFound = false;
         boolean oneMinFound = false;
+        long maxSale = this.max();
+        long minSale = this.min();
         for (long sale : sales) {
-           /* if (sale == this.max() || sale == this.min()) {
-                continue;
-            }*/
-            if(sale == this.max() && !oneMaxFound){
+            if (sale == maxSale && !oneMaxFound) {
                 oneMaxFound = true;
                 continue;
             }
-            if(sale == this.min() && !oneMinFound){
+            if (sale == minSale && !oneMinFound) {
                 oneMinFound = true;
                 continue;
             }
             trMean += sale;
         }
         return trMean / (sales.length - 2);
-
     }
-
 }
